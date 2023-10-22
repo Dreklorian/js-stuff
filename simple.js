@@ -20,3 +20,8 @@ console.log(newtest);
 let dog;
 console.log(dog + "god");
 newtest + 4;
+console.log(`I am an example
+of an extremely long string
+on multiple lines`);
+console.log("I am an example\n" + "of an extremely long string");
+console.log("I am an example\n of an extremely long string");
