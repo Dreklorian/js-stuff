@@ -62,3 +62,51 @@ console.log(fibonacci(0)); // []
 console.log(fibonacci(1)); // [1]
 console.log(fibonacci(6)); // [1, 1, 2, 3, 5, 8]
 console.log(fibonacci(8)); // [1, 1, 2, 3, 5, 8, 13, 21]
+
+function hasVowel(str) {
+    for (let i = 0; i < str.length; i++) {
+        if ("aeiouAEIOU".includes(str[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function countVowels(word) {
+  // your code here...
+  let count = 0;
+   for (let i = 0; i < word.length; i++) {
+        if ("aeiouAEIOU".includes(word[i])) {
+            count++;
+        }
+    }
+    return count;
+};
+
+// So the two rules for our version of Pig Latin are:
+
+// 1. For words that start with a vowel, add 'yay' to the end of the word.
+// 2. For words that start with a non-vowel, move all letters that come
+// **before the first vowel** to the **end of the word** then add 'ay'
+
+function pigLatinWord(word) {
+  // your code here...
+  let firstVowel = 0;
+  let newWord = "";
+  for (let i = 0; i < word.length; i++) {
+    if ("aeiouAEIOU".includes(word[i])) {
+      if (i !== 0) {
+        newWord = word.slice(i) + word.slice(0, i) + "ay";
+        return newWord;
+      } else {
+        newWord = word + "yay";
+        return newWord;
+      }
+    }
+  }
+};
+
+console.log(pigLatinWord("apple")); //=> "appleyay"
+console.log(pigLatinWord("eat")); //=> "eatyay"
+console.log(pigLatinWord("banana")); //=> "ananabay"
+console.log(pigLatinWord("trash")); //=> "ashtray"
