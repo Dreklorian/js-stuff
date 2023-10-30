@@ -150,3 +150,127 @@ console.log(tripletTrue('terrrrrible'));   // true
 console.log(tripletTrue('runninggg'));     // true
 console.log(tripletTrue('bootcamp'));      // false
 console.log(tripletTrue('e'));             // false
+
+function sillyString(str) {
+  let vowels = "aeiouAEIOU";
+  let newWord = "";
+  for (let i=0;i<str.length;i++) {
+    if (vowels.includes(str[i])) {
+      newWord += str[i] + "b" + str[i];
+    } else {
+      newWord += str[i];
+    }
+  }
+  return newWord;
+}
+console.log(sillyString('stop'));       // stobop
+console.log(sillyString('that'));       // thabat
+console.log(sillyString('can'));        // caban
+console.log(sillyString('cats'));       // cabats
+console.log(sillyString('italy'));      // ibitabaly
+console.log(sillyString('scooter'));    // scobooboteber
+
+function moreDotLessDash(str) {
+  let dots = 0;
+  let dashes = 0;
+  for (let i = 0; i<str.length;i++) {
+    if (str[i] === ".") {
+      dots++;
+    } else if (str[i] === "-") {
+      dashes++;
+    }
+  }
+  /* if (dots > dashes) {
+    return true;
+  } else {
+    return false;
+  } */
+  return dots > dashes;
+}
+console.log(moreDotLessDash('2-D arrays are fun. I think.'));           // true
+console.log(moreDotLessDash('Morse code is great.'));                   // true
+console.log(moreDotLessDash('.... . -.--'));                            // true
+console.log(moreDotLessDash('.--. .-. --- --. .-. .- -- -- . .-.'));    // false
+console.log(moreDotLessDash('high-flying acrobat.'));                   // false
+
+function hasThreeVowels(str) {
+  str = str.toLowerCase();
+  let vowels = "aeiou";
+  let vowelList = "";
+  for (let i = 0;i<str.length;i++) {
+    if (vowels.includes(str[i]) && !(vowelList.includes(str[i]))) {
+      vowelList += str[i];
+    }
+  }
+  return vowelList.length > 2;
+}
+
+console.log(hasThreeVowels('dElicious'));       //  true
+console.log(hasThreeVowels('bootcamp prep'));   //  true
+console.log(hasThreeVowels('bootcamp'));        //  false
+console.log(hasThreeVowels('dog'));             //  false
+console.log(hasThreeVowels('go home'));         //  false
+
+
+function lastIndex(str, char) {
+  return str.lastIndexOf(char);
+}
+
+console.log(lastIndex("abca", "a"))        // 3
+console.log(lastIndex("mississipi", "i"))  // 9
+console.log(lastIndex("octagon", "o"))     // 5
+console.log(lastIndex("programming", "m")) // 7
+
+
+function doubleLetterCount(string) {
+  let count = 0
+  for (let i = 1;i<string.length;i++) {
+    if (string[i] === string[i-1]) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(doubleLetterCount("the jeep rolled down the hill"));  // 3
+console.log(doubleLetterCount("bootcamp")); // 1
+
+// const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+function caesarCipher(string, num) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let newWord = "";
+  let alphaIndex;
+  for (let i = 0;i<string.length;i++) {
+    alphaIndex = alphabet.indexOf(string[i]);
+    /* if (alphaIndex + num > 25) {
+      alphaIndex -= 26;
+    } */
+    newWord += alphabet[(alphaIndex + num) % alphabet.length];
+  }
+  return newWord;
+}
+
+console.log(caesarCipher("apple", 1)); // "bqqmf"
+console.log(caesarCipher("bootcamp", 2)); // "dqqvecor"
+console.log(caesarCipher("zebra", 4)); // "difve"
+console.log(caesarCipher("tuvwxyz", 4));
+
+function vowelCipher(string) {
+  const vowels = "aeioua";
+  let word = "";
+  let vowel;
+  for (let i = 0;i<string.length;i++){
+    vowel = vowels.indexOf(string[i]);
+    if (vowel !== -1) {
+      word += vowels[vowel + 1];
+    } else {
+      word += string[i];
+    }
+  }
+  return word;
+}
+
+
+console.log(vowelCipher("bootcamp")); // "buutcemp"
+console.log(vowelCipher("paper cup")); // "pepir cap"
