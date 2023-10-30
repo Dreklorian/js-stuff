@@ -91,7 +91,6 @@ function countVowels(word) {
 
 function pigLatinWord(word) {
   // your code here...
-  let firstVowel = 0;
   let newWord = "";
   for (let i = 0; i < word.length; i++) {
     if ("aeiouAEIOU".includes(word[i])) {
@@ -110,3 +109,44 @@ console.log(pigLatinWord("apple")); //=> "appleyay"
 console.log(pigLatinWord("eat")); //=> "eatyay"
 console.log(pigLatinWord("banana")); //=> "ananabay"
 console.log(pigLatinWord("trash")); //=> "ashtray"
+
+function abbreviate(word) {
+  let newWord = "";
+  for (let i = 0;i<word.length;i++) {
+    let test = !("aeiouAEIOU".includes(word[i]));
+    if (test) {
+      newWord += word[i];
+    }
+  }
+  return newWord;
+}
+console.log(abbreviate('wonderful')); // 'wndrfl'
+console.log(abbreviate('mystery')); // 'mystry'
+console.log(abbreviate('Accordian')); // 'ccrdn'
+
+function uncompress(str) {
+  let word = "";
+  let addOn = "";
+  for (let i=0;i<str.length;i+=2) {
+    addOn = str[i].repeat(Number(str[i + 1]));
+    word += addOn;
+  }
+  return word;
+}
+console.log(uncompress('x3y4z2')); // 'xxxyyyyzz'
+console.log(uncompress('a5b2c4z1')); // 'aaaaabbccccz'
+console.log(uncompress('b1o2t1')); // 'boot'
+
+function tripletTrue(str) {
+  for (let i=0;i<str.length-2;i++) {
+    if (str[i] === str[i+1] && str[i+1] === str[i+2]) {
+      return true;
+    }
+  }
+  return false;
+}
+console.log(tripletTrue('caaabb'));        // true
+console.log(tripletTrue('terrrrrible'));   // true
+console.log(tripletTrue('runninggg'));     // true
+console.log(tripletTrue('bootcamp'));      // false
+console.log(tripletTrue('e'));             // false
