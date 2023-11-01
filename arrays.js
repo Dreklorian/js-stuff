@@ -25,3 +25,27 @@ console.log(myIncludes(['a', 'b', 'c', 'e'], 'a')); // true
 console.log(myIncludes(['a', 'b', 'c', 'e'], 'z')); // false
 console.log(myIncludes([43, -7, 11, 13], 11)); // true
 console.log(myIncludes([43, -7, 11, 13], 1)); // false
+
+function myIndexOf(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) return i;
+  }
+  return -1;
+}
+
+console.log(myIndexOf(['a', 'b', 'c', 'e'], 'c')); // 2
+console.log(myIndexOf(['a', 'b', 'c', 'e'], 'e')); // 3
+console.log(myIndexOf(['a', 'b', 'c', 'e'], 'z')); // -1
+console.log(myIndexOf([43, -7, 11, 13, 43], 43)); // 0
+console.log(myIndexOf([43, -7, 11, 13], 1)); // -1
+
+function sumArray(array) {
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
+    total += array[i];
+  }
+  return total;
+}
+
+console.log(sumArray([5, 6, 4])); // => 15
+console.log(sumArray([7, 3, 9, 11])); // => 30
