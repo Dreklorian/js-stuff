@@ -49,3 +49,17 @@ function sumArray(array) {
 
 console.log(sumArray([5, 6, 4])); // => 15
 console.log(sumArray([7, 3, 9, 11])); // => 30
+
+let myFunc = function() {
+  console.log("I'm a function.")
+};
+
+function myFunc2() {
+  console.log("I too am a function.");
+}
+console.log(myFunc);
+console.log(myFunc());
+//myFunc();
+console.log(myFunc2);
+console.log(myFunc2());
+myFunc2();
