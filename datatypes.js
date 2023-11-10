@@ -46,3 +46,66 @@ console.log(lastVowel('rhythmi')); // null
 
 let test = Math.sqrt(16);
 console.log(test);
+
+let minValue = function(nums) {
+  if (nums.length === 0) return null;
+  let min = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] < min) {
+      min = nums[i];
+    }
+  }
+  return min;
+};
+
+console.log(minValue([4, 6, 3, 5, 2, 4])); // 2
+console.log(minValue([-2, -3, -7, 3 ])); // -7
+console.log(minValue([])); // null
+
+function avgVal(arr) {
+  if (arr.length === 0) return null;
+  let avg;
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  avg = sum / arr.length;
+  return avg;
+}
+
+console.log(avgVal([5, 10])); // 7.5
+console.log(avgVal([3, 7, 2, 1, 2])); // 3
+console.log(avgVal([])); // null
+console.log(avgVal([undefined, 3, 5, -1]));
+
+let maxValue = function(nums) {
+  if (nums.length === 0) return null;
+  let max = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > max) {
+      max = nums[i];
+    }
+  }
+  return max;
+};
+
+console.log(maxValue([4, 6, 3, 5, 42, 4])); // 42
+console.log(maxValue([-2, -3, -7, 3 ])); // 3
+console.log(maxValue([])); // null
+
+let reverb = function(word) {
+  if (typeof word !== 'string') return null;
+  for (let i = word.length - 1; i >= 0; i--) {
+    if ("aeiouAEIOU".includes(word[i])) {
+      return word + word.slice(i);
+    }
+  }
+  return word;
+};
+
+console.log(reverb('running')); // runninging
+console.log(reverb('FAMILY'));  // FAMILYILY
+console.log(reverb('trash'));   // trashash
+console.log(reverb('DISH'));    // DISHISH
+console.log(reverb(197393));    // null
+console.log(reverb('rhythm'));    // null
