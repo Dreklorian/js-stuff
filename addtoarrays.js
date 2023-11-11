@@ -246,3 +246,72 @@ let adjacentSums = function(nums) {
 console.log(adjacentSums([3, 8, 7, 1]));        // [ 11, 15, 8 ]
 console.log(adjacentSums([10, 5, 4, 3, 9]));    // [ 15, 9, 7, 12 ]
 console.log(adjacentSums([2, -3, 3]));          // [-1, 0]
+
+let fibonacciSequence = function(len) {
+  let seq = [];
+  for (let i = 0; i < len; i++) {
+    if (i < 2) {
+      seq.push(1);
+    } else {
+      seq.push(seq[i - 2] + seq[i - 1]);
+    }
+  }
+  return seq;
+};
+
+console.log(fibonacciSequence(4));  // [ 1, 1, 2, 3 ]
+console.log(fibonacciSequence(5));  // [ 1, 1, 2, 3, 5 ]
+console.log(fibonacciSequence(8));  // [ 1, 1, 2, 3, 5, 8, 13, 21 ]
+console.log(fibonacciSequence(0));  // [ ]
+console.log(fibonacciSequence(1));  // [ 1 ]
+console.log(fibonacciSequence(2));  // [ 1, 1 ]
+//console.log(fibonacciSequence(64));
+
+function greatestFactorArrayFull(array) {
+  let highFactors = [];
+  let highest;
+  let num;
+    for (let i = 0; i < array.length; i++) {
+      num = array[i];
+      for (let j = 1; j < num; j++) {
+        if (num % j === 0) {
+          highest = j;
+        }
+      }
+      highFactors.push(highest);
+    }
+  return highFactors;
+}
+
+//just even numbers
+function greatestFactorArray(array) {
+  let newArr = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      newArr.push(array[i] / 2);
+    } else {
+      newArr.push(array[i]);
+    }
+  }
+  return newArr;
+}
+console.log(greatestFactorArray([16, 7, 9, 14])); // [8, 7, 9, 7]
+console.log(greatestFactorArray([30, 3, 24, 21, 10])); // [15, 3, 12, 21, 5]
+
+function summationSequence(start, length) {
+  let sums = [start];
+  for (let i = 1; i < length; i++) {
+    sums.push(summation(sums[i - 1]))
+  }
+  return sums;
+}
+
+function summation(num) {
+  let sum = 0;
+  for (let i = 1; i <= num; i++) {
+    sum += i;
+  }
+  return sum;
+}
+console.log(summationSequence(3, 4)); // [3, 6, 21, 231]
+console.log(summationSequence(5, 3)); // [5, 15, 120]
