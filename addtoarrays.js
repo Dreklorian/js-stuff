@@ -254,6 +254,7 @@ let fibonacciSequence = function(len) {
       seq.push(1);
     } else {
       seq.push(seq[i - 2] + seq[i - 1]);
+      console.log(seq[i-1] / seq[i-2]);
     }
   }
   return seq;
@@ -315,3 +316,4 @@ function summation(num) {
 }
 console.log(summationSequence(3, 4)); // [3, 6, 21, 231]
 console.log(summationSequence(5, 3)); // [5, 15, 120]
+console.log(fibonacciSequence(101));
