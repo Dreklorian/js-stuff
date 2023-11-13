@@ -120,3 +120,116 @@ matrix = [[1, 2, 3, 4, 5, 6, 7, 8],
           [33,34,35,36,37,38]];
 
 console.log(spiralOrder(matrix));
+
+// For example, given 2, 3, 7, 5, 9 as the base, we should construct this pyramid:
+//
+//           85
+//         37  48
+//       15  22  26
+//    5   10   12   14
+//  2   3    7    5    9
+//
+//
+function pyramidArray(base) {
+  let pyramid = [base];
+  let newArr = [];
+  let curArr = base;
+  let total = 0;
+  for (let i = 1; i <= base.length - 1; i++) {
+    total += i;
+  }
+  while (total > 0) {
+    for (let i = 0; i < curArr.length - 1; i++) {
+      total--;
+      newArr.push(curArr[i] + curArr[i + 1]);
+    }
+    pyramid.push(newArr);
+    curArr = newArr;
+    newArr = [];
+  }
+  return pyramid.reverse();
+}
+
+//AA version more efficient
+let pyramidArray2 = function(base) {
+  let pyramid = [base];
+  while (pyramid.length < base.length) {
+    let next = adjacentSums(pyramid[0]);
+    pyramid.unshift(next);
+  }
+  return pyramid;
+};
+
+let adjacentSums = function(arr) {
+  let sums = [];
+  for (let i = 0; i < arr.length - 1; i++) {
+    let sum = arr[i] + arr[i + 1];
+    sums.push(sum);
+  }
+  return sums;
+};
+
+
+let p1 = pyramidArray([2, 3, 7, 5, 9]);
+console.log(p1);
+// [
+//   [ 85 ],
+//   [ 37, 48 ],
+//   [ 15, 22, 26 ],
+//   [ 5, 10, 12, 14 ],
+//   [ 2, 3, 7, 5, 9 ]
+// ]
+
+let p2 = pyramidArray([2, 2, 2, 2]);
+console.log(p2);
+// [
+//   [ 16 ],
+//   [ 8, 8 ],
+//   [ 4, 4, 4 ],
+//   [ 2, 2, 2, 2 ]
+// ]
+
+// For example, here are the first 5 levels of Pascal's triangle:
+//       1
+//      1 1
+//     1 2 1
+//    1 3 3 1
+//   1 4 6 4 1
+
+let pascalsTriangle = function(n) {
+  let pascal = [[1]];
+
+  while (pascal.length < n) {
+    let prev = pascal[pascal.length - 1];
+    let next = [1];
+    for (let i = 0; i < prev.length - 1; i++) {
+      next.push(prev[i] + prev[i + 1]);
+    }
+    next.push(1);
+    pascal.push(next);
+    //prev = next;
+  }
+  return pascal;
+};
+
+
+
+console.log(pascalsTriangle(5));
+// [
+//     [1],
+//     [1, 1],
+//     [1, 2, 1],
+//     [1, 3, 3, 1],
+//     [1, 4, 6, 4, 1]
+// ]
+
+console.log(pascalsTriangle(7));
+// [
+//     [1],
+//     [1, 1],
+//     [1, 2, 1],
+//     [1, 3, 3, 1],
+//     [1, 4, 6, 4, 1],
+//     [1, 5, 10, 10, 5, 1],
+//     [1, 6, 15, 20, 15, 6, 1]
+// ]
