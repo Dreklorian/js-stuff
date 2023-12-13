@@ -16,9 +16,9 @@ myDog.myKey = "???";
 console.log(myDog); // prints `{name: "Fido", myKey: "???"}`
 console.log(myDog.myKey); // prints `???`
 // mind === "blown"
-a = b = 1;
-console.log(a);
-console.log(b);
+// a = b = 1;
+// console.log(a);
+// console.log(b);
 
 function printObject(obj) {
   let keys = Object.keys(obj);
@@ -69,3 +69,45 @@ console.log(catBuilder("Whiskers", "black", ["scratching-post", "yarn"]));
 
 console.log(catBuilder("Nyan", "rainbow", ["poptarts"]));
 // prints: { name: 'Nyan', color: 'rainbow', toys: [ 'poptarts' ] }
+
+let colors = { red: "scarlet", blue: "aquamarine" };
+let newColors = { ...colors };
+let oldColors = colors;
+
+console.log(newColors);
+
+colors.red = "red";
+newColors.blue = "blue";
+console.log(newColors);
+console.log(colors);
+console.log(oldColors);
+
+function resttest(arg1, arg2, ...args) {
+  console.log("Arg1 is " + arg1);
+  console.log("Arg2 is " + arg2);
+  console.log(args);
+  console.log(...args);
+}
+
+resttest("a", "b", "c", 6, "apple");
+
+let nums = [1,2,3,4];
+let numsshallow = nums;
+let numsdeep = [...nums];
+console.log(nums);
+console.log(numsshallow);
+console.log(numsdeep);
+nums[0] = 9;
+
+console.log(nums);
+console.log(numsshallow);
+console.log(numsdeep);
+
+[numsdeep[0], numsdeep[1]] = [numsdeep[1], numsdeep[0]]; //proper array element swapping based on destructuring
+console.log(numsdeep);
+
+
+let { a, c, ...obj } = { a: 1, b: 2, c: 3, d: 4 };
+console.log(a); // => 1
+console.log(c); // => 3
+console.log(obj); // => { b: 2, d: 4 }
